@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}User Login{% endblock %}
+
+{% block content %}
+<h1>User Login</h1>
+
+<!-- Add the inline CSS block -->
+<style>
+    /* Global Styles */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2.5em;
+        color: #2c3e50;
+        margin-bottom: 30px;
+        font-weight: 600;
+    }
+
+    /* Form Container */
+    .container {
+        max-width: 400px;
+        margin: 20px;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Form Elements */
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #555;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+        outline: none;
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 14px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+    }
+
+    a {
+        text-align: center;
+        color: #007bff;
+        font-size: 1rem;
+        margin-top: 10px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: #0056b3;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+        .container {
+            padding: 20px;
+            width: 90%;
+        }
+        
+        h1 {
+            font-size: 2em;
+        }
+    }
+</style>
+
+<!-- Add the form container -->
+<div class="container">
+    <form method="POST">
+        <label for="userid">User ID:</label>
+        <input type="text" name="userid" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+        
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <a href="{{ url_for('signup') }}" class="btn btn-link">Sign Up</a>
+</div>
+
+{% endblock %}
+

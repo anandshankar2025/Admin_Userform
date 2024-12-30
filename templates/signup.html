@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<h1>Create an Account</h1>
+
+<!-- Add inline CSS for simplicity -->
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2em;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-bottom: 2px;
+        color: #555;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 1rem;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<!-- Form Container -->
+<div class="container">
+    <form method="POST">
+        <label for="userid">User ID:</label>
+        <input type="text" name="userid" required>
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" required>
+
+        <label for="message">Message:</label>
+        <textarea name="message" required></textarea>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" name="confirm_password" required>
+
+        <label for="account_type">Account Type:</label>
+        <select name="account_type">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+<h1>Welcome, {{ user['name'] }}!</h1>
+
+<!-- Simplified and Modern Design with CSS -->
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #333;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2.5em;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 500px;
+        padding: 30px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #555;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+        outline: none;
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+    }
+
+    a {
+        display: block;
+        text-align: center;
+        color: #e74c3c;
+        margin-top: 15px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #c0392b;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+        .container {
+            padding: 20px;
+            width: 90%;
+        }
+        
+        h1 {
+            font-size: 2em;
+        }
+    }
+</style>
+
+<!-- Form Container -->
+<div class="container">
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="{{ user['name'] }}" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="{{ user['email'] }}" required>
+
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" value="{{ user['phone'] }}" required>
+
+        <label for="message">Message:</label>
+        <textarea name="message" required>{{ user['message'] }}</textarea>
+
+        <button type="submit">Update</button>
+    </form>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</div>
+
+{% endblock %}

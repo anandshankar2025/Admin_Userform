@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Admin Dashboard</h1>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Message</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user_id, user_data in users.items() %}
+                <tr>
+                    <td>{{ user_id }}</td>
+                    <td>{{ user_data.name }}</td>
+                    <td>{{ user_data.email }}</td>
+                    <td>{{ user_data.phone }}</td>
+                    <td>{{ user_data.message }}</td>
+                    <td>
+                        <form method="POST" class="d-grid gap-2">
+                            <input type="hidden" name="userid" value="{{ user_id }}">
+                            <div class="form-floating mb-2">
+                                <input type="text" class="form-control" name="name" value="{{ user_data.name }}" required>
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="form-floating mb-2">
+                                <input type="email" class="form-control" name="email" value="{{ user_data.email }}" required>
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="form-floating mb-2">
+                                <input type="text" class="form-control" name="phone" value="{{ user_data.phone }}" required>
+                                <label for="phone">Phone</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" name="message" style="height: 100px;" required>{{ user_data.message }}</textarea>
+                                <label for="message">Message</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{{ url_for('logout') }}" class="btn btn-danger btn-lg">Logout</a>
+    </div>
+</div>
+{% endblock %}
